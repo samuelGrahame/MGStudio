@@ -18,6 +18,8 @@ namespace MGStudio
     public partial class frmImageEditor : DevExpress.XtraEditors.XtraForm
     {
         public Bitmap DrawingImage { get; set; }
+        public LockBitmap UnlockedBitmap { get; set; } = null;
+
         public static List<Color> ColorHistory = new List<Color>();
         
         public int DrawingImageWidth { get; set; }
@@ -29,7 +31,8 @@ namespace MGStudio
         public enum DrawTool
         {
             Pencil,
-            Rubber
+            Rubber,
+            PaintBucket
         }
 
         public enum ColorMode
@@ -51,6 +54,10 @@ namespace MGStudio
             if(DrawingImage == null)
             {
                 DrawingImage = new Bitmap(DrawingImageWidth, DrawingImageHeight);
+                using (Graphics g = Graphics.FromImage(DrawingImage))
+                {
+                    g.Clear(Color.Transparent);
+                }
             }
             
             fastDraw1.Size = new Size(DrawingImageWidth, DrawingImageHeight);
@@ -66,7 +73,9 @@ namespace MGStudio
                 dt.Rows.Add(dr);
             }
 
-            dt.AcceptChanges();            
+            dt.AcceptChanges();
+
+            pictureEdit2.Image = DrawingImage;
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -99,8 +108,6 @@ namespace MGStudio
             ZoomChanged();
         }    
         
-
-
         private void fastDraw1_Paint(object sender, PaintEventArgs e)
         {
             //MGStudio.Properties.Resources.x32x32Trans      
@@ -109,6 +116,8 @@ namespace MGStudio
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                                     
             e.Graphics.DrawImage(DrawingImage, new Rectangle(0, 0, fastDraw1.Width, fastDraw1.Height));
+
+            pictureEdit2.Refresh();
         }
 
         public void DrawLine(int x0, int y0, int x1, int y1, MouseButtons button)
@@ -130,8 +139,14 @@ namespace MGStudio
         {
             if (!IsMouseDown)
                 return;
-            
+            UnlockedBitmap = new LockBitmap(DrawingImage);
+            UnlockedBitmap.LockBits();
+
             DrawLine(prevMouse.X, prevMouse.Y, e.Location.X, e.Location.Y, e.Button);
+
+            UnlockedBitmap.UnlockBits();
+            UnlockedBitmap = null;
+
             fastDraw1.Refresh();
 
             prevMouse = e.Location;
@@ -140,7 +155,7 @@ namespace MGStudio
         private void fastDraw1_MouseUp(object sender, MouseEventArgs e)
         {
             IsMouseDown = false;
-            Path = new Dictionary<long, Color>();
+            Path = new Dictionary<Tuple<int, int>, Color>();
         }
 
         public Color GetCurrentColor(MouseButtons button)
@@ -168,23 +183,60 @@ namespace MGStudio
 
         //public List<Tuple<int, int, Color>> Path = new List<Tuple<int, int, Color>>();
 
-        public Dictionary<long, Color> Path = new Dictionary<long, Color>();
+        public Dictionary<Tuple<int, int>, Color> Path = new Dictionary<Tuple<int, int>, Color>();
 
         public Color Merge(int x, int y, Color ColorB, Color ColorA)
         {
-            long key =  (x * y + DrawingImage.Width);
+            Tuple<int, int> key = new Tuple<int, int>(x, y);
             if (Path.ContainsKey(key))
                 return Path[key];
 
-            return (Path[key] = Color.FromArgb(ColorA.A * ColorB.A / 255, ColorA.R * ColorB.R / 255, ColorA.G * ColorB.G / 255, ColorA.B * ColorB.B / 255));            
+            int rA = ColorA.R;
+            int rB = ColorB.R;
+
+            int aA = ColorA.A;
+            int aB = ColorB.A;
+
+            int gA = ColorA.G;
+            int gB = ColorB.G;
+
+            int bA = ColorA.B;
+            int bB = ColorB.B;
+
+            int rOut = (rA * aA / 255) + (rB * aB * (255 - aA) / (255 * 255));
+            int gOut = (gA * aA / 255) + (gB * aB * (255 - aA) / (255 * 255));
+            int bOut = (bA * aA / 255) + (bB * aB * (255 - aA) / (255 * 255));
+            int aOut = aA + (aB * (255 - aA) / 255);
+
+            return (Path[key] = Color.FromArgb(aOut, rOut, gOut, bOut));            
         }
 
         public Color NoColor = Color.FromArgb(0, 0, 0, 0);
+
+        public Point TranslatePoint(int x, int y)
+        {
+            var scale = (decimal)(Zoom / 100.0f);
+
+            x = (int)(x / scale);
+            y = (int)(y / scale);
+
+            if (x < 0)
+                x = 0;
+            if (y < 0)
+                y = 0;
+
+            if (x >= DrawingImageWidth)
+                x = DrawingImageWidth - 1;
+            if (y >= DrawingImageHeight)
+                y = DrawingImageHeight - 1;
+
+            return new Point(x, y);
+        }
+
         public void DrawPixel(int X, int Y, MouseButtons button, bool DelayRefresh = false)
         {            
             Color foreColor = GetCurrentColor(button);
             
-            Bitmap bmp = DrawingImage;
             var scale = (decimal)(Zoom / 100.0f);
             
             var x = (int)(X / scale);
@@ -200,28 +252,28 @@ namespace MGStudio
             if (y >= DrawingImageHeight)
                 y = DrawingImageHeight - 1;
 
-            if(ColorModeActive == ColorMode.Blend && OpacityPen != 0 && OpacityPen != 255)
-            {
-                var ColorA = Color.FromArgb(OpacityPen, foreColor);
-                var ColorB = bmp.GetPixel(x, y);
+            if(ColorModeActive == ColorMode.Blend && ((OpacityPen != 0 && OpacityPen != 255) || (foreColor.A != 0 && foreColor.A != 255)))
+            {            
+                var ColorA = (foreColor.A != 0 && foreColor.A != 255) ? foreColor : Color.FromArgb(OpacityPen, foreColor);
+                var ColorB = UnlockedBitmap.GetPixel(x, y);
                 if (ColorB == Color.Transparent || ColorB == NoColor)
-                {                    
-                    bmp.SetPixel(x, y, ColorA);
+                {
+                    UnlockedBitmap.SetPixel(x, y, ColorA);
                 }
                 else
                 {
-                    bmp.SetPixel(x, y, Merge(x, y, ColorA, ColorB));                    
+                    UnlockedBitmap.SetPixel(x, y, Merge(x, y, ColorA, ColorB));                    
                 }                
             }
             else
             {
                 if(OpacityPen != 255)
                 {
-                    bmp.SetPixel(x, y, Color.FromArgb(OpacityPen, foreColor));
+                    UnlockedBitmap.SetPixel(x, y, Color.FromArgb(OpacityPen, foreColor));
                 }
                 else
                 {
-                    bmp.SetPixel(x, y, foreColor);
+                    UnlockedBitmap.SetPixel(x, y, foreColor);
                 }                
             }
             
@@ -233,12 +285,106 @@ namespace MGStudio
         }
         Point prevMouse;
 
+        
+        public bool GoBack = false;
+        public int StartX;
+        public int StartY;        
+
+        public class Pixel
+        {
+            public int X;
+            public int Y;
+            public Color Color;
+        }
+
+        public void FloodArea(int x, int y, Color colorToSet, Color colorClickedOn)
+        {
+            Dictionary<Tuple<int, int>, bool> PosDone = new Dictionary<Tuple<int, int>, bool>();
+            Queue<Pixel> PixelStack = new Queue<Pixel>();
+
+            PixelStack.Enqueue(new Pixel() { Color = colorClickedOn, X = x, Y = y });
+
+            while (PixelStack.Count > 0)
+            {
+                var pixel = PixelStack.Dequeue();
+                x = pixel.X;
+                y = pixel.Y;
+
+                var key = new Tuple<int, int>(x, y);
+                
+                if (x < 0 || y < 0 || y > DrawingImageHeight - 1 || x > DrawingImageWidth - 1 || PosDone.ContainsKey(key))
+                {                    
+                    continue;
+                }
+                PosDone[key] = true;
+                var color = UnlockedBitmap.GetPixel(x, y); // DrawingImage.GetPixel(x, y);
+
+                if (color.A == 0)
+                {
+                    color = Color.Transparent;
+                }
+                if (color == colorClickedOn)
+                {
+                    UnlockedBitmap.SetPixel(x, y, colorToSet);                    
+                }
+                else
+                {
+                    continue;
+                }
+
+                PixelStack.Enqueue(new Pixel() { Color = color, X = x - 1, Y = y });
+                PixelStack.Enqueue(new Pixel() { Color = color, X = x, Y = y - 1 });
+
+                PixelStack.Enqueue(new Pixel() { Color = color, X = x, Y = y + 1 });
+                PixelStack.Enqueue(new Pixel() { Color = color, X = x + 1, Y = y });                
+            }            
+        }
+
         private void fastDraw1_MouseDown(object sender, MouseEventArgs e)
         {
-            IsMouseDown = true;
-            prevMouse = e.Location;
 
-            DrawPixel(e.X, e.Y, e.Button);
+            if (DrawToolActive == DrawTool.PaintBucket)
+            {
+                if (e.Button != MouseButtons.Left && e.Button != MouseButtons.Right)
+                    return;
+
+                var point = TranslatePoint(e.X, e.Y);
+
+                Color ColorClicked = DrawingImage.GetPixel(point.X, point.Y);
+                if(ColorClicked.A == 0)
+                {
+                    ColorClicked = Color.Transparent;
+                }
+
+                Color ColorToSet = Color.Empty;
+                if (e.Button == MouseButtons.Left)
+                    ColorToSet = colorPickEdit1.Color;
+                else if (e.Button == MouseButtons.Right)
+                    ColorToSet = colorPickEdit2.Color;
+                UnlockedBitmap = new LockBitmap(DrawingImage);
+                UnlockedBitmap.LockBits();
+
+                FloodArea(point.X, point.Y, ColorToSet, ColorClicked);
+
+                UnlockedBitmap.UnlockBits();
+                UnlockedBitmap = null;
+
+                fastDraw1.Refresh();
+            }
+            else
+            {
+                IsMouseDown = true;
+                prevMouse = e.Location;
+                UnlockedBitmap = new LockBitmap(DrawingImage);
+                UnlockedBitmap.LockBits();
+
+                DrawPixel(e.X, e.Y, e.Button, true);
+
+                UnlockedBitmap.UnlockBits();
+                UnlockedBitmap = null;
+
+                fastDraw1.Refresh();
+            }                       
         }
 
         sealed class Win32
@@ -428,19 +574,7 @@ namespace MGStudio
 
         private void gridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            if(gridView1.FocusedRowHandle > -1)
-            {
-                ColorMouseDown = true;
-                if(e.Button == MouseButtons.Left)
-                {
-                    colorPickEdit1.Color = (Color)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Color");
-                }
-                else if (e.Button == MouseButtons.Right)
-                {
-                    colorPickEdit2.Color = (Color)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Color");
-                }
-                ColorMouseDown = false;
-            }
+            
         }
         byte OpacityPen = 255;
         private void spinEdit1_EditValueChanged(object sender, EventArgs e)
@@ -458,6 +592,92 @@ namespace MGStudio
         private void radioGroup2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ColorModeActive = (ColorMode)radioGroup2.SelectedIndex;
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {                        
+            using (Graphics g = Graphics.FromImage(DrawingImage))
+            {
+                g.Clear(Color.Transparent);
+            }
+            fastDraw1.Refresh();
+        }
+
+        private void radioGroup3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            colorPickEdit3.Enabled = radioGroup3.SelectedIndex == 1;
+            RefreshBackground();
+        }
+
+        public void RefreshBackground()
+        {
+            if(radioGroup3.SelectedIndex == 0)
+            {
+                fastDraw1.BackgroundImage = Properties.Resources.x32x32Trans;
+            }
+            else
+            {
+                fastDraw1.BackgroundImage = null;
+                fastDraw1.BackColor = colorPickEdit3.Color;
+            }
+        }
+
+        private void colorPickEdit3_EditValueChanged(object sender, EventArgs e)
+        {
+            RefreshBackground();
+        }
+
+        private void gridView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void gridView1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                var rowHandles = gridView1.GetSelectedRows();
+
+                if(rowHandles != null && rowHandles.Length > 0)
+                {
+                    var Rows = new DataRow[rowHandles.Length];
+
+                    for (int i = 0; i < rowHandles.Length; i++)
+                    {
+                        Rows[i] = ((DataRowView)gridView1.GetRow(rowHandles[i])).Row;
+                        var color = (Color)Rows[i]["Color"];                        
+                        ColorHistory.Remove(color);
+                    }
+                    var dt = GetColorDataTable();
+                    for (int i = 0; i < rowHandles.Length; i++)
+                    {
+                        dt.Rows.Remove(Rows[i]);
+                    }
+                    dt.AcceptChanges();                    
+                }
+            }
+        }
+
+        private void gridControl1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (gridView1.FocusedRowHandle > -1)
+            {
+                ColorMouseDown = true;
+                if (e.Button == MouseButtons.Left)
+                {
+                    colorPickEdit1.Color = (Color)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Color");
+                }
+                else if (e.Button == MouseButtons.Right)
+                {
+                    colorPickEdit2.Color = (Color)gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Color");
+                }
+                ColorMouseDown = false;
+            }
         }
     }
 }

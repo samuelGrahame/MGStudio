@@ -85,7 +85,7 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbon.Size = new System.Drawing.Size(972, 146);
+            this.ribbon.Size = new System.Drawing.Size(960, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barButtonItem1
@@ -216,17 +216,17 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 590);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 588);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(972, 21);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(960, 23);
             // 
             // treeList1
             // 
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
             this.treeList1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeList1.Location = new System.Drawing.Point(0, 146);
+            this.treeList1.Location = new System.Drawing.Point(0, 147);
             this.treeList1.Name = "treeList1";
             this.treeList1.BeginUnboundLoad();
             this.treeList1.AppendNode(new object[] {
@@ -263,7 +263,7 @@
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.OptionsView.ShowVertLines = false;
             this.treeList1.SelectImageList = this.imageCollection1;
-            this.treeList1.Size = new System.Drawing.Size(240, 444);
+            this.treeList1.Size = new System.Drawing.Size(240, 441);
             this.treeList1.TabIndex = 2;
             this.treeList1.GetSelectImage += new DevExpress.XtraTreeList.GetSelectImageEventHandler(this.treeList1_GetSelectImage);
             this.treeList1.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treeList1_FocusedNodeChanged);
@@ -294,9 +294,9 @@
             // 
             // splitterControl1
             // 
-            this.splitterControl1.Location = new System.Drawing.Point(240, 146);
+            this.splitterControl1.Location = new System.Drawing.Point(240, 147);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(12, 444);
+            this.splitterControl1.Size = new System.Drawing.Size(12, 441);
             this.splitterControl1.TabIndex = 3;
             this.splitterControl1.TabStop = false;
             // 
@@ -310,7 +310,7 @@
             // 
             // defaultLookAndFeel1
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             // 
             // popupMenu1
             // 
@@ -328,7 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 611);
+            this.ClientSize = new System.Drawing.Size(960, 611);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.treeList1);
             this.Controls.Add(this.ribbonStatusBar);

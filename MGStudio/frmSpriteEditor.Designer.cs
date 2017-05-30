@@ -93,7 +93,7 @@
             this.barStaticItem2,
             this.barStaticItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 15;
+            this.barManager1.MaxItemId = 16;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -236,6 +236,7 @@
             this.barButtonItem5.ImageOptions.Image = global::MGStudio.Properties.Resources.separator_16x16;
             this.barButtonItem5.ImageOptions.LargeImage = global::MGStudio.Properties.Resources.separator_32x32;
             this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barButtonItem6
             // 
@@ -258,9 +259,9 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 509);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 505);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(750, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(750, 26);
             // 
             // barDockControlLeft
             // 
@@ -268,7 +269,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 457);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 453);
             // 
             // barDockControlRight
             // 
@@ -276,7 +277,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(750, 52);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 457);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 453);
             // 
             // splitContainerControl1
             // 
@@ -286,7 +287,7 @@
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(746, 434);
+            this.splitContainerControl1.Size = new System.Drawing.Size(746, 430);
             this.splitContainerControl1.SplitterPosition = 140;
             this.splitContainerControl1.TabIndex = 4;
             this.splitContainerControl1.Text = "splitContainerControl1";
@@ -298,7 +299,7 @@
             this.gridControl1.MainView = this.winExplorerView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(594, 434);
+            this.gridControl1.Size = new System.Drawing.Size(594, 430);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.winExplorerView1});
@@ -318,9 +319,11 @@
             this.winExplorerView1.GridControl = this.gridControl1;
             this.winExplorerView1.Name = "winExplorerView1";
             this.winExplorerView1.OptionsBehavior.Editable = false;
+            this.winExplorerView1.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.NeverAnimate;
             this.winExplorerView1.OptionsView.Style = DevExpress.XtraGrid.Views.WinExplorer.WinExplorerViewStyle.Medium;
             this.winExplorerView1.OptionsViewStyles.Content.ItemWidth = 592;
             this.winExplorerView1.OptionsViewStyles.Medium.ImageSize = new System.Drawing.Size(32, 32);
+            this.winExplorerView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.winExplorerView1_KeyUp);
             // 
             // gridColumn1
             // 
@@ -344,7 +347,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 52);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(750, 457);
+            this.groupControl1.Size = new System.Drawing.Size(750, 453);
             this.groupControl1.TabIndex = 5;
             // 
             // frmSpriteEditor

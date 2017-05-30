@@ -11,7 +11,7 @@ namespace MGStudio
     {        
         public FastDraw()
         {
-            base.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.StandardClick | ControlStyles.UserPaint, true);
+            base.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.StandardClick | ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true);
         }
     }
 }
