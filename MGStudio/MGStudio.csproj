@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\Color.png" />
     <None Include="Resources\zoomout_32x32.png" />
     <None Include="Resources\zoomout_16x16.png" />
     <None Include="Resources\zoomin_32x32.png" />

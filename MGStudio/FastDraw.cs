@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace MGStudio
 {
     public class FastDraw : Control
-    {
+    {        
         public FastDraw()
         {
             base.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.StandardClick | ControlStyles.UserPaint, true);

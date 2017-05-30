@@ -52,20 +52,40 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.radioGroup2 = new DevExpress.XtraEditors.RadioGroup();
+            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            this.colorPickEdit2 = new DevExpress.XtraEditors.ColorPickEdit();
+            this.colorPickEdit1 = new DevExpress.XtraEditors.ColorPickEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.fastDraw1 = new MGStudio.FastDraw();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit1.Properties)).BeginInit();
             this.xtraScrollableControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            this.groupControl3.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -254,55 +274,240 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(619, 52);
+            this.barDockControlTop.Size = new System.Drawing.Size(619, 53);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 529);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 526);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(619, 22);
+            this.barDockControlBottom.Size = new System.Drawing.Size(619, 25);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 477);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 473);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(619, 52);
+            this.barDockControlRight.Location = new System.Drawing.Point(619, 53);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 477);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 473);
             // 
             // groupControl1
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupControl1.Controls.Add(this.radioGroup1);
             this.groupControl1.Location = new System.Drawing.Point(0, 54);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(131, 476);
+            this.groupControl1.Size = new System.Drawing.Size(131, 471);
             this.groupControl1.TabIndex = 4;
-            this.groupControl1.Text = "Toolbox";
+            this.groupControl1.Text = "Tools";
+            // 
+            // radioGroup1
+            // 
+            this.radioGroup1.Location = new System.Drawing.Point(5, 23);
+            this.radioGroup1.MenuManager = this.barManager1;
+            this.radioGroup1.Name = "radioGroup1";
+            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Pencil"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Eraser")});
+            this.radioGroup1.Size = new System.Drawing.Size(121, 59);
+            this.radioGroup1.TabIndex = 0;
+            this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
             // 
             // groupControl2
             // 
             this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl2.Controls.Add(this.radioGroup2);
+            this.groupControl2.Controls.Add(this.spinEdit1);
+            this.groupControl2.Controls.Add(this.labelControl3);
+            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Controls.Add(this.checkEdit1);
+            this.groupControl2.Controls.Add(this.pictureEdit1);
+            this.groupControl2.Controls.Add(this.colorPickEdit2);
+            this.groupControl2.Controls.Add(this.colorPickEdit1);
             this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.labelControl1);
-            this.groupControl2.Controls.Add(this.pictureBox2);
-            this.groupControl2.Controls.Add(this.pictureBox1);
-            this.groupControl2.Location = new System.Drawing.Point(507, 54);
+            this.groupControl2.Location = new System.Drawing.Point(479, 54);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(112, 476);
+            this.groupControl2.Size = new System.Drawing.Size(140, 471);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Colors";
+            // 
+            // radioGroup2
+            // 
+            this.radioGroup2.Location = new System.Drawing.Point(5, 108);
+            this.radioGroup2.MenuManager = this.barManager1;
+            this.radioGroup2.Name = "radioGroup2";
+            this.radioGroup2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.radioGroup2.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.radioGroup2.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Blend"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "Replace")});
+            this.radioGroup2.Size = new System.Drawing.Size(121, 27);
+            this.radioGroup2.TabIndex = 12;
+            this.radioGroup2.SelectedIndexChanged += new System.EventHandler(this.radioGroup2_SelectedIndexChanged);
+            // 
+            // spinEdit1
+            // 
+            this.spinEdit1.EditValue = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.spinEdit1.Location = new System.Drawing.Point(5, 155);
+            this.spinEdit1.MenuManager = this.barManager1;
+            this.spinEdit1.Name = "spinEdit1";
+            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEdit1.Properties.Mask.EditMask = "f0";
+            this.spinEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.spinEdit1.Properties.MaxValue = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.spinEdit1.Size = new System.Drawing.Size(123, 20);
+            this.spinEdit1.TabIndex = 11;
+            this.spinEdit1.EditValueChanged += new System.EventHandler(this.spinEdit1_EditValueChanged);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(5, 136);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(41, 13);
+            this.labelControl3.TabIndex = 10;
+            this.labelControl3.Text = "Opacity:";
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl1.Location = new System.Drawing.Point(5, 329);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(123, 137);
+            this.gridControl1.TabIndex = 8;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsSelection.InvertSelection = true;
+            this.gridView1.OptionsView.ShowColumnHeaders = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.OptionsView.ShowIndicator = false;
+            this.gridView1.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView1.RowHeight = 20;
+            this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
+            this.gridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseDown);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.FieldName = "Color";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.ReadOnly = true;
+            this.gridColumn1.OptionsColumn.ShowInCustomizationForm = false;
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(5, 304);
+            this.checkEdit1.MenuManager = this.barManager1;
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "Screen Pixel";
+            this.checkEdit1.Size = new System.Drawing.Size(123, 19);
+            this.checkEdit1.TabIndex = 7;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureEdit1.EditValue = global::MGStudio.Properties.Resources.Color;
+            this.pictureEdit1.Location = new System.Drawing.Point(5, 181);
+            this.pictureEdit1.MenuManager = this.barManager1;
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
+            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit1.Properties.ReadOnly = true;
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pictureEdit1.Properties.ZoomAccelerationFactor = 1D;
+            this.pictureEdit1.Size = new System.Drawing.Size(123, 123);
+            this.pictureEdit1.TabIndex = 6;
+            this.pictureEdit1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pictureEdit1_KeyDown);
+            this.pictureEdit1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.pictureEdit1_KeyUp);
+            this.pictureEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureEdit1_MouseDown);
+            this.pictureEdit1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureEdit1_MouseMove);
+            this.pictureEdit1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureEdit1_MouseUp);
+            // 
+            // colorPickEdit2
+            // 
+            this.colorPickEdit2.EditValue = System.Drawing.Color.White;
+            this.colorPickEdit2.Location = new System.Drawing.Point(5, 87);
+            this.colorPickEdit2.MenuManager = this.barManager1;
+            this.colorPickEdit2.Name = "colorPickEdit2";
+            this.colorPickEdit2.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.colorPickEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.colorPickEdit2.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colorPickEdit2.Properties.ShowWebSafeColors = true;
+            this.colorPickEdit2.Size = new System.Drawing.Size(123, 20);
+            this.colorPickEdit2.TabIndex = 5;
+            // 
+            // colorPickEdit1
+            // 
+            this.colorPickEdit1.EditValue = System.Drawing.Color.Black;
+            this.colorPickEdit1.Location = new System.Drawing.Point(5, 42);
+            this.colorPickEdit1.MenuManager = this.barManager1;
+            this.colorPickEdit1.Name = "colorPickEdit1";
+            this.colorPickEdit1.Properties.AutomaticColor = System.Drawing.Color.Black;
+            this.colorPickEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.colorPickEdit1.Properties.ColorAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colorPickEdit1.Properties.ShowWebSafeColors = true;
+            this.colorPickEdit1.Size = new System.Drawing.Size(123, 20);
+            this.colorPickEdit1.TabIndex = 4;
+            this.colorPickEdit1.EditValueChanged += new System.EventHandler(this.colorPickEdit1_EditValueChanged);
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(5, 68);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(29, 13);
+            this.labelControl2.TabIndex = 3;
+            this.labelControl2.Text = "Right:";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(5, 23);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(23, 13);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "Left:";
             // 
             // xtraScrollableControl1
             // 
@@ -310,17 +515,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xtraScrollableControl1.Controls.Add(this.fastDraw1);
-            this.xtraScrollableControl1.Location = new System.Drawing.Point(137, 66);
+            this.xtraScrollableControl1.Location = new System.Drawing.Point(5, 23);
             this.xtraScrollableControl1.Name = "xtraScrollableControl1";
-            this.xtraScrollableControl1.Size = new System.Drawing.Size(345, 460);
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(326, 443);
             this.xtraScrollableControl1.TabIndex = 6;
             // 
             // fastDraw1
             // 
-            this.fastDraw1.BackgroundImage = global::MGStudio.Properties.Resources.x32x32Trans;
+            this.fastDraw1.BackColor = System.Drawing.Color.White;
             this.fastDraw1.Location = new System.Drawing.Point(0, 3);
             this.fastDraw1.Name = "fastDraw1";
-            this.fastDraw1.Size = new System.Drawing.Size(84, 67);
+            this.fastDraw1.Size = new System.Drawing.Size(32, 32);
             this.fastDraw1.TabIndex = 0;
             this.fastDraw1.Text = "fastDraw1";
             this.fastDraw1.Paint += new System.Windows.Forms.PaintEventHandler(this.fastDraw1_Paint);
@@ -328,50 +533,26 @@
             this.fastDraw1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.fastDraw1_MouseMove);
             this.fastDraw1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.fastDraw1_MouseUp);
             // 
-            // pictureBox1
+            // groupControl3
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(67, 33);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(20, 18);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(23, 13);
-            this.labelControl1.TabIndex = 2;
-            this.labelControl1.Text = "Left:";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(69, 18);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(29, 13);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "Right:";
+            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl3.Controls.Add(this.xtraScrollableControl1);
+            this.groupControl3.Location = new System.Drawing.Point(137, 54);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(336, 471);
+            this.groupControl3.TabIndex = 11;
+            this.groupControl3.Text = "Canvas";
             // 
             // frmImageEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 551);
-            this.Controls.Add(this.xtraScrollableControl1);
-            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -382,12 +563,22 @@
             this.Load += new System.EventHandler(this.frmImageEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radioGroup2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPickEdit1.Properties)).EndInit();
             this.xtraScrollableControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            this.groupControl3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -423,7 +614,17 @@
         private FastDraw fastDraw1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraEditors.RadioGroup radioGroup1;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.ColorPickEdit colorPickEdit1;
+        private DevExpress.XtraEditors.ColorPickEdit colorPickEdit2;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.SpinEdit spinEdit1;
+        private DevExpress.XtraEditors.RadioGroup radioGroup2;
     }
 }
