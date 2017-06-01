@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -20,9 +21,35 @@ namespace MGStudio
         public int Width { get; private set; }
         public int Height { get; private set; }
 
+        public bool Locked = false;
+
         public LockBitmap(Bitmap source)
         {
             this.source = source;
+        }
+
+        public Texture2D GetTexture2D(GraphicsDevice device)
+        {
+            if (!Locked)
+                LockBits();
+            
+            var texture = new Texture2D(device, Width, Height);
+            var data = new byte[Pixels.Length];
+            
+            Array.Copy(Pixels, data, Pixels.Length);
+
+            for (int i = 0; i < data.Length; i += 4)
+            {
+                byte temp = data[i + 0];
+                data[i + 0] = data[i + 2];
+                data[i + 2] = temp;
+            }
+            texture.SetData(data);
+                        
+            if (Locked)
+                UnlockBits();
+
+            return texture;
         }
 
         /// <summary>
@@ -30,8 +57,12 @@ namespace MGStudio
         /// </summary>
         public void LockBits()
         {
+            if (Locked)
+                return;
+
             try
             {
+                Locked = true;
                 // Get width and height of bitmap
                 Width = source.Width;
                 Height = source.Height;
@@ -65,7 +96,7 @@ namespace MGStudio
             }
             catch (Exception)
             {
-                
+                Locked = false;
             }
         }
 
@@ -74,8 +105,12 @@ namespace MGStudio
         /// </summary>
         public void UnlockBits()
         {
+            if (!Locked)
+                return;
+
             try
             {
+                Locked = false;
                 // Copy data from byte array to pointer
                 Marshal.Copy(Pixels, 0, Iptr, Pixels.Length);
 
@@ -84,7 +119,7 @@ namespace MGStudio
             }
             catch (Exception)
             {
-                
+                Locked = true;
             }
         }
 

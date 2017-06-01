@@ -127,6 +127,7 @@
             this.barButtonItem5.ImageOptions.Image = global::MGStudio.Properties.Resources.play_32x32;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barButtonItem6
             // 

@@ -12,6 +12,9 @@ namespace MGStudio
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        KeyboardState CurrentState = new KeyboardState();
+        KeyboardState PreviousState = new KeyboardState();
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);

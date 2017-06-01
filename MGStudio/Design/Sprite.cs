@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MGStudio.BaseObjects;
+using MGStudio.RunTime;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,18 +11,30 @@ using System.Threading.Tasks;
 
 namespace MGStudio.Design
 {
-    public class Sprite : ProjectItem
-    {        
-        public int Width { get; set; }
-        public int Height { get; set; }
-
-        public int OriginX { get; set; }
-        public int OriginY { get; set; }
-
-        public bool PreciseCollisionChecking { get; set; }
-        public bool SeperateCollisionMasks { get; set; }
-
+    public class Sprite : BaseSprite
+    {                
         public List<string> RawImages = new List<string>();
+
+        public SpriteM Parse(GraphicsDevice device)
+        {
+            var sprM = new SpriteM() { Name = this.Name, Height = this.Height, Width = this.Width, OriginX = this.OriginX, OriginY = this.OriginY, PreciseCollisionChecking = this.PreciseCollisionChecking, SeperateCollisionMasks = this.SeperateCollisionMasks };
+
+            foreach (var bmp in GetImages())
+            {
+                if(bmp == null)
+                {
+                    sprM.Textures.Add(null);
+                }
+                else
+                {
+                    var lockBits = new LockBitmap(bmp);
+                    sprM.Textures.Add(lockBits.GetTexture2D(device));
+                    bmp.Dispose();
+                }
+            }
+
+            return sprM;
+        }
 
         public List<Bitmap> GetImages()
         {
@@ -27,10 +42,18 @@ namespace MGStudio.Design
 
             foreach (var rawImage in RawImages)
             {
-                using (MemoryStream streamBitmap = new System.IO.MemoryStream(Convert.FromBase64String(rawImage)))
+                if(string.IsNullOrWhiteSpace(rawImage))
                 {
-                    images.Add((Bitmap)Image.FromStream(streamBitmap));
-                }                
+                    images.Add(null);
+                }
+                else
+                {
+                    using (MemoryStream streamBitmap = new System.IO.MemoryStream(Convert.FromBase64String(rawImage)))
+                    {
+                        images.Add((Bitmap)Image.FromStream(streamBitmap));
+                    }
+                }
+                
             }
             return images;
         }

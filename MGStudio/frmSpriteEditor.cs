@@ -217,8 +217,7 @@ namespace MGStudio
                                 catch (Exception)
                                 {
                                     
-                                }
-                                
+                                }                                
                             }                            
                         }
                     }

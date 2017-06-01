@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using MGStudio.Design;
 using DevExpress.XtraTreeList.Nodes;
+using MGStudio.BaseObjects;
 
 namespace MGStudio
 {
@@ -163,6 +164,15 @@ namespace MGStudio
         private void treeList1_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             ShowEditor = false;
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var x = new GameObject() { Name = "Human" };
+            x.Properties.Add(new GameObjectProperty() { Name = "Name", Expression = "", PropertyType = GameObjectPropertyType.String });
+            x.Events.Add(new GameObjectEvents() { EventType = BaseObjects.BaseGameObjectEventType.KeyPress, EventArguments = new KeyboardArgument() { KeyCode = Microsoft.Xna.Framework.Input.Keys.Up } });
+
+            MessageBox.Show(x.ToCSharp(true, true));
         }
     }
 }
