@@ -15,6 +15,9 @@ namespace MGStudio
         KeyboardState NewKeyboard = new KeyboardState();
         KeyboardState OldKeyboard = new KeyboardState();
 
+        MouseState NewMouse = new MouseState();
+        MouseState OldMouse = new MouseState();
+
         public GameClient()
         {
             graphics = new GraphicsDeviceManager(this);
