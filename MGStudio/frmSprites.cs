@@ -15,7 +15,7 @@ namespace MGStudio
 {
     public partial class frmSprites : DevExpress.XtraEditors.XtraForm
     {
-        public Sprite ActiveSprite { get; set; }
+        public DesignSprite ActiveSprite { get; set; }
         public TreeListNode Node { get; set; }
 
         public frmSprites()

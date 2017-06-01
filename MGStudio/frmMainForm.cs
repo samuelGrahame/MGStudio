@@ -11,6 +11,7 @@ using DevExpress.XtraBars;
 using MGStudio.Design;
 using DevExpress.XtraTreeList.Nodes;
 using MGStudio.BaseObjects;
+using CSScriptLibrary;
 
 namespace MGStudio
 {
@@ -42,7 +43,7 @@ namespace MGStudio
 
         private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var sprite = new Sprite() { Height = 32, Width = 32, Name = "sprite_" + ActiveProject.SpriteDirectory.Count };
+            var sprite = new DesignSprite() { Height = 32, Width = 32, Name = "sprite_" + ActiveProject.SpriteDirectory.Count };
             TreeListNode node;
             if (treeList1.FocusedNode == null)
             {
@@ -114,7 +115,7 @@ namespace MGStudio
             {
                 if (e.Node.RootNode.Id == 0)
                 {
-                    var x = ((Sprite)e.Node.Tag).GetImages();
+                    var x = ((DesignSprite)e.Node.Tag).GetImages();
                     if (x.Count > 0)
                     {                        
                         e.Graphics.DrawImage(x[0], e.Bounds);                        
@@ -151,7 +152,7 @@ namespace MGStudio
                     if(treeList1.FocusedNode.RootNode.Id == 0)
                     {
                         var newx = new frmSprites();
-                        newx.ActiveSprite = treeList1.FocusedNode.Tag as Sprite;
+                        newx.ActiveSprite = treeList1.FocusedNode.Tag as DesignSprite;
                         newx.MdiParent = this;
                         newx.Node = treeList1.FocusedNode;
                         newx.TopLevel = false;
@@ -172,7 +173,12 @@ namespace MGStudio
             x.Properties.Add(new GameObjectProperty() { Name = "Name", Expression = "", PropertyType = GameObjectPropertyType.String });
             x.Events.Add(new GameObjectEvents() { EventType = BaseObjects.BaseGameObjectEventType.KeyPress, EventArguments = new KeyboardArgument() { KeyCode = Microsoft.Xna.Framework.Input.Keys.Up } });
 
-            MessageBox.Show(x.ToCSharp(true, true));
+            var assembly = CSScript.LoadCode(x.ToCSharp(true, true));
+
+            if(assembly != null)
+            {
+                
+            }
         }
     }
 }

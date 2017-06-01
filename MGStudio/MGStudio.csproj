@@ -52,7 +52,7 @@
     <Compile Include="Design\GameObjectEvents.cs" />
     <Compile Include="Design\GameObjectProperties.cs" />
     <Compile Include="Design\Project.cs" />
-    <Compile Include="Design\Sprite.cs" />
+    <Compile Include="Design\DesignSprite.cs" />
     <Compile Include="FastDraw.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -95,9 +95,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RunTime\GameObjectEventsM.cs" />
-    <Compile Include="RunTime\GameObjectM.cs" />
-    <Compile Include="RunTime\SpriteM.cs" />
+    <Compile Include="RunTime\Entity.cs" />
+    <Compile Include="RunTime\Sprite.cs" />
     <Compile Include="Scripting.evaluator.cs" />
     <Compile Include="Scripting.Extensions.cs" />
     <Compile Include="Scripting.native.cs" />

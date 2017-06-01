@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace MGStudio.Design
 {
-    public class Sprite : BaseSprite
+    public class DesignSprite : BaseSprite
     {                
         public List<string> RawImages = new List<string>();
 
-        public SpriteM Parse(GraphicsDevice device)
+        public Sprite Parse(GraphicsDevice device)
         {
-            var sprM = new SpriteM() { Name = this.Name, Height = this.Height, Width = this.Width, OriginX = this.OriginX, OriginY = this.OriginY, PreciseCollisionChecking = this.PreciseCollisionChecking, SeperateCollisionMasks = this.SeperateCollisionMasks };
+            var sprM = new Sprite() { Name = this.Name, Height = this.Height, Width = this.Width, OriginX = this.OriginX, OriginY = this.OriginY, PreciseCollisionChecking = this.PreciseCollisionChecking, SeperateCollisionMasks = this.SeperateCollisionMasks };
 
             foreach (var bmp in GetImages())
             {

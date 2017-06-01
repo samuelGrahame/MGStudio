@@ -12,8 +12,8 @@ namespace MGStudio.Design
 {
     public class GameObject : BaseGameObject
     {
-        public Sprite ActiveSprite { get; set; } = null;
-        public Sprite ActiveMask { get; set; } = null;
+        public DesignSprite ActiveSprite { get; set; } = null;
+        public DesignSprite ActiveMask { get; set; } = null;
         public GameObject ParentGameObject { get; set; }
         public List<GameObjectEvents> Events { get; set; } = new List<GameObjectEvents>();
         public List<GameObjectProperty> Properties { get; set; } = new List<GameObjectProperty>();
@@ -25,7 +25,7 @@ namespace MGStudio.Design
 
         private string ToCSharpParentName()
         {
-            return ParentGameObject == null ? "" : " : " + ParentGameObject.ToCSharpName();
+            return ParentGameObject == null ? " : " + "Entity" : " : " + ParentGameObject.ToCSharpName();
         }        
         
         private string ToCSharpGetBodyCode()
@@ -35,27 +35,12 @@ namespace MGStudio.Design
 
             var builder = new StringBuilder();
             
-            builder.Append(
-string.Format(@"
-        public bool Visible {4} get; set; {5}{0}
-        public bool Solid {4} get; set; {5}{1}
-        public bool Persistent {4} get; set; {5}{2}
-        public bool Depth {4} get; set; {5}{3}
-        public float X {4} get; set; {5}
-        public float Y {4} get; set; {5}        
-        public float Rotation {4} get; set; {5}
-        public SpriteM Sprite {4} get; set; {5}", 
-        Visible ? " = true;" : "",
-        Solid ? " = true;" : "",
-        Persistent ? " = true;" : "",
-        " = " + Depth.ToString() + ";", "{", "}"));
-
             var gameEvents = new List<GameObjectEvents>();
             gameEvents.AddRange(Events);
 
             foreach (var property in Properties)
             {
-                builder.AppendFormat("\r\n        public {0} {1} {3} get; set; {4}{2}", property.Name, property.ToCSharpTypeObjectName(), property.ToCSharpExpression(), "{", "}");
+                builder.AppendFormat("\r\n        public {0} {1} {3} get; set; {4}{2}", property.ToCSharpTypeObjectName(), property.Name, property.ToCSharpExpression(), "{", "}");
             }
             StringBuilder tempBuilder;
             int length = 0;
@@ -244,6 +229,23 @@ string.Format(@"
         {1}", ToCSharpName(), "{"));
             length = tempBuilder.Length;
             int x = 0;
+
+            if(Visible)
+                tempBuilder.Append("\r\n            Visible = true;");            
+            if (Solid)            
+                tempBuilder.Append("\r\n            Solid = true;");            
+            if (Persistent)            
+                tempBuilder.Append("\r\n            Persistent = true;");            
+            if (Depth != 0)            
+                tempBuilder.Append("\r\n            Depth = " + Depth + ";");            
+
+            foreach (var property in Properties)
+            {
+                string Expression = property.ToCSharpExpression();
+                if(!string.IsNullOrWhiteSpace(Expression))
+                    tempBuilder.AppendFormat("\r\n            {0} = {1};", property.Name, property.ToCSharpExpression());
+            }            
+
             foreach (var item in Events.Where(ev => ev.EventType == BaseGameObjectEventType.New))
             {
                 string funcName = "__New_" + x;
@@ -329,13 +331,14 @@ string.Format(@"
             if(IsFirst)
             {
                 StartPadding = @"
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using MGStudio;
-
 namespace MGStudio.Script
-{";
+{
+    using Microsoft.Xna.Framework;
+    using Microsoft.Xna.Framework.Graphics;
+    using Microsoft.Xna.Framework.Input;
+    using MGStudio;
+    using MGStudio.RunTime;
+";
             }
             else
             {
