@@ -7,15 +7,15 @@ namespace MGStudio
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class GameClient : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        KeyboardState CurrentState = new KeyboardState();
-        KeyboardState PreviousState = new KeyboardState();
+        KeyboardState NewKeyboard = new KeyboardState();
+        KeyboardState OldKeyboard = new KeyboardState();
 
-        public Game1()
+        public GameClient()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

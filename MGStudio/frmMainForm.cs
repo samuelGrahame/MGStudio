@@ -12,6 +12,7 @@ using MGStudio.Design;
 using DevExpress.XtraTreeList.Nodes;
 using MGStudio.BaseObjects;
 using CSScriptLibrary;
+using MGStudio.RunTime;
 
 namespace MGStudio
 {
@@ -177,7 +178,12 @@ namespace MGStudio
 
             if(assembly != null)
             {
-                
+                var entity = (Entity)assembly.CreateObject("*");
+
+                if(entity != null)
+                {
+
+                }
             }
         }
     }

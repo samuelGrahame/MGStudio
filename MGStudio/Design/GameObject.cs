@@ -47,7 +47,7 @@ namespace MGStudio.Design
             
             {
                 tempBuilder = new StringBuilder(@"
-        public void __keyboard(KeyboardState __ckeyState, KeyboardState __pkeyState)
+        public override void HandleInput(KeyboardState New, KeyboardState Old KeyboardState __ckeyState, KeyboardState __pkeyState)
         {");
 
                 length = tempBuilder.Length;
@@ -58,7 +58,7 @@ namespace MGStudio.Design
                     {
                         string funcName = "__keyDown_" + kba.KeyCode.ToString("G");
                         tempBuilder.AppendFormat(@"
-            if(__ckeyState.IsKeyDown(Keys.{0})){1}", kba.KeyCode.ToString("G"), "{ " + funcName + "(); }");
+            if(New.IsKeyDown(Keys.{0})){1}", kba.KeyCode.ToString("G"), "{ " + funcName + "(); }");
                         
                         builder.AppendLine(item.ToCSharpEvent(funcName));
                     }
@@ -73,7 +73,7 @@ namespace MGStudio.Design
                         string funcName = "__keyPress_" + kba.KeyCode.ToString("G");
 
                         tempBuilder.AppendFormat(@"
-            if(__ckeyState.IsKeyDown(Keys.{0}) && __pkeyState.IsKeyUp(Keys.{0})){1}", kba.KeyCode.ToString("G"), "{ " + funcName + "(); }");
+            if(New.IsKeyDown(Keys.{0}) && Old.IsKeyUp(Keys.{0})){1}", kba.KeyCode.ToString("G"), "{ " + funcName + "(); }");
 
                         
                         builder.AppendLine(item.ToCSharpEvent(funcName));
@@ -88,7 +88,7 @@ namespace MGStudio.Design
                     {
                         string funcName = "__keyRelease_" + kba.KeyCode.ToString("G");
                         tempBuilder.AppendFormat(@"
-            if(__pkeyState.IsKeyDown(Keys.{0}) && __ckeyState.IsKeyUp(Keys.{0})){1}", kba.KeyCode.ToString("G"), "{ " + funcName + "(); }");
+            if(Old.IsKeyDown(Keys.{0}) && New.IsKeyUp(Keys.{0})){1}", kba.KeyCode.ToString("G"), "{ " + funcName + "(); }");
                         
                         builder.AppendLine(item.ToCSharpEvent(funcName));
                     }
@@ -106,7 +106,7 @@ namespace MGStudio.Design
             // MouseEvents
             {
                 tempBuilder = new StringBuilder(@"
-        public void __Mouse(MouseState __cmouseState, MouseState __pmouseState, bool MouseInSprite)
+        public override void HandleMouse(MouseState New, MouseState Old, bool MouseInSprite)
         {");
                 length = tempBuilder.Length;
 
@@ -120,43 +120,43 @@ namespace MGStudio.Design
                         {
                             case Mouses.Left_button:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Right_button:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Middle_button:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.No__button:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.LeftButton == ButtonState.Released && __cmouseState.RightButton == ButtonState.Released && __cmouseState.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.LeftButton == ButtonState.Released && New.RightButton == ButtonState.Released && New.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Left_pressed:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.LeftButton == ButtonState.Pressed && __pmouseState.LeftButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.LeftButton == ButtonState.Pressed && Old.LeftButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Right_pressed:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.RightButton == ButtonState.Pressed && __pmouseState.RightButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.RightButton == ButtonState.Pressed && Old.RightButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Middle_pressed:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.MiddleButton == ButtonState.Pressed && __pmouseState.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.MiddleButton == ButtonState.Pressed && Old.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Left_released:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.LeftButton == ButtonState.Released && __pmouseState.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.LeftButton == ButtonState.Released && Old.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Right_released:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.RightButton == ButtonState.Released && __pmouseState.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.RightButton == ButtonState.Released && Old.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Middle_released:
                                 tempBuilder.AppendFormat(@"
-            if(MouseInSprite && __cmouseState.MiddleButton == ButtonState.Released && __pmouseState.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(MouseInSprite && New.MiddleButton == ButtonState.Released && Old.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Mouse_enter:
                                 break;
@@ -168,39 +168,39 @@ namespace MGStudio.Design
                                 break;
                             case Mouses.Global_left_button:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(New.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_right_button:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(New.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_middle_button:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(New.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_left_pressed:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.LeftButton == ButtonState.Pressed && __pmouseState.LeftButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(New.LeftButton == ButtonState.Pressed && Old.LeftButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_right_pressed:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.RightButton == ButtonState.Pressed && __pmouseState.RightButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(New.RightButton == ButtonState.Pressed && Old.RightButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_middle_pressed:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.MiddleButton == ButtonState.Pressed && __pmouseState.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
+            if(New.MiddleButton == ButtonState.Pressed && Old.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_left_released:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.LeftButton == ButtonState.Released && __pmouseState.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(New.LeftButton == ButtonState.Released && Old.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_right_released:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.RightButton == ButtonState.Released && __pmouseState.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(New.RightButton == ButtonState.Released && Old.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             case Mouses.Global_middle_released:
                                 tempBuilder.AppendFormat(@"
-            if(__cmouseState.MiddleButton == ButtonState.Released && __pmouseState.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
+            if(New.MiddleButton == ButtonState.Released && Old.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
                             default:
                                 break;
@@ -265,20 +265,19 @@ namespace MGStudio.Design
 
                 builder.Append(tempBuilder.ToString());
             }
-
+            
             tempBuilder = new StringBuilder(@"
-        public void __Draw()
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
         {");
             length = tempBuilder.Length;
-            x = 0;
+            x = 0;            
             foreach (var item in Events.Where(ev => ev.EventType == BaseGameObjectEventType.Draw))
             {
-                string funcName = "__Draw_" + x;
-                tempBuilder.Append(@"
-           " + funcName + "();");
-
+                if(x == 0)
+                {                    
+                    tempBuilder.Append(item.ToCSharpEventBody());                    
+                }
                 gameEvents.Remove(item);
-                builder.AppendLine(item.ToCSharpEvent(funcName));
 
                 x++;
             }
@@ -292,18 +291,18 @@ namespace MGStudio.Design
             }
 
             tempBuilder = new StringBuilder(@"
-        public void __Step()
+        public override void Step(GameTime gameTime)
         {");
             length = tempBuilder.Length;
             x = 0;
             foreach (var item in Events.Where(ev => ev.EventType == BaseGameObjectEventType.Step))
             {
-                string funcName = "__Step_" + x;
-                tempBuilder.Append(@"
-           " + funcName + "();");
+                if (x == 0)
+                {
+                    tempBuilder.Append(item.ToCSharpEventBody());
+                }
 
-                gameEvents.Remove(item);
-                builder.AppendLine(item.ToCSharpEvent(funcName));
+                gameEvents.Remove(item);                
 
                 x++;
             }

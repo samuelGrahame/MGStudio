@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="BaseObjects\BaseGameObject.cs" />
     <Compile Include="BaseObjects\BaseGameObjectEvents.cs" />
+    <Compile Include="BaseObjects\BaseRoom.cs" />
     <Compile Include="BaseObjects\BaseSprite.cs" />
+    <Compile Include="Design\DesignRoom.cs" />
     <Compile Include="Design\GameObject.cs" />
     <Compile Include="Design\GameObjectEventNode.cs" />
     <Compile Include="Design\GameObjectEvents.cs" />
@@ -96,6 +98,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RunTime\Entity.cs" />
+    <Compile Include="RunTime\Room.cs" />
     <Compile Include="RunTime\Sprite.cs" />
     <Compile Include="Scripting.evaluator.cs" />
     <Compile Include="Scripting.Extensions.cs" />
