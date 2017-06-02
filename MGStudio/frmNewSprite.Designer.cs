@@ -125,6 +125,7 @@
             this.MinimizeBox = false;
             this.Name = "frmNewSprite";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create a new sprite";
             this.Load += new System.EventHandler(this.frmNewSprite_Load);
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();

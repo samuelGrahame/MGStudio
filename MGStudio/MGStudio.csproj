@@ -76,6 +76,12 @@
     <Compile Include="frmNewSprite.Designer.cs">
       <DependentUpon>frmNewSprite.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmObject.Designer.cs">
+      <DependentUpon>frmObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSpriteEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewSprite.resx">
       <DependentUpon>frmNewSprite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmObject.resx">
+      <DependentUpon>frmObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSpriteEditor.resx">
       <DependentUpon>frmSpriteEditor.cs</DependentUpon>
