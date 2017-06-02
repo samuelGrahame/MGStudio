@@ -119,6 +119,8 @@ namespace MGStudio.RunTime
 
             newEntity.X = _x;
             newEntity.Y= _y;
+
+            return newEntity;
         }
     }
 }
