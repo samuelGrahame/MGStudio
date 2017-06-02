@@ -11,8 +11,6 @@ namespace MGStudio.RunTime
 {
     public class Sprite : BaseSprite
     {        
-        public List<Texture2D> Textures = new List<Texture2D>();
-
-        
+        public List<Texture2D> Textures = new List<Texture2D>();        
     }
 }

@@ -16,7 +16,7 @@ namespace MGStudio.Design
         public List<ProjectItem> FontsDirectory = new List<ProjectItem>();
         public List<ProjectItem> TimeLinesDirectory = new List<ProjectItem>();
         public List<ProjectItem> ObjectsDirectory = new List<ProjectItem>();
-        public List<ProjectItem> RoomsDirectory = new List<ProjectItem>();
+        public List<ProjectItem> RoomsDirectory = new List<ProjectItem>();        
     }
 
     public class ProjectItem
@@ -26,6 +26,6 @@ namespace MGStudio.Design
 
     public class ProjectFolder
     {
-
+        public List<ProjectItem> Items = new List<ProjectItem>();
     }
 }

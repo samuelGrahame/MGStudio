@@ -16,9 +16,41 @@ namespace MGStudio.RunTime
         public bool Persistent { get; set; } = false;
         public int Depth { get; set; } = 0;
 
-        public float X { get; set; }
-        public float Y { get; set; }
+        private float x;
+
+        public float X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
+        private float y;
+
+        public float Y
+        {
+            get { return y; }
+            set {
+                if (y != value)
+                    return;
+
+                y = value;
+            }
+        }
+        
         public float Rotation { get; set; }
+
+        public Sprite ActiveSprite { get; set; } = null;
+
+        private Room room = null;
+
+        public Room ActiveRoom
+        {
+            get { return room; }
+            set {
+                room = value;
+            }
+        }
+
 
         public virtual void Step(GameTime gameTime)
         {

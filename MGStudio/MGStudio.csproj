@@ -98,6 +98,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RunTime\Entity.cs" />
+    <Compile Include="RunTime\EntityService.cs" />
+    <Compile Include="RunTime\ProjectGame.cs" />
     <Compile Include="RunTime\Room.cs" />
     <Compile Include="RunTime\Sprite.cs" />
     <Compile Include="Scripting.evaluator.cs" />
