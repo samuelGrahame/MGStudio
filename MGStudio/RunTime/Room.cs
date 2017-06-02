@@ -1,4 +1,5 @@
 ﻿using MGStudio.BaseObjects;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +8,28 @@ using System.Threading.Tasks;
 
 namespace MGStudio.RunTime
 {
-    public class Room : BaseRoom
+    public class Room : BaseRoom, IGameOverload
     {
         public int TileWidth { get; set; } = 32;
         public int TileHeight { get; set; } = 32;
 
-        public Tile[,] ActivatedEntities;
+        public List<Entity> ActivatedEntities = new List<Entity>();
+
+        public Tile[,] Tiles;
 
         public EntityService MovedObjects = new EntityService();
         public EntityService VisibleObjects = new EntityService();
-        
+
+        public Color BackColor;
+
+        private ProjectGame Parent;
+
         public Entity MoveObject(Entity entity, int x, int y)
         {
             if (entity == null)
-                return null;            
+                return null;
 
-            var tile = ActivatedEntities[x, y];
+            var tile = Tiles[x, y];
             if(tile.Items == null)
             {
                 tile.Items = new List<Entity>();
@@ -36,7 +43,7 @@ namespace MGStudio.RunTime
             if (!entity.__New)
             {
                 var previousTile = GetTileIndex(entity.__X, entity.__Y);
-                var prevTile = ActivatedEntities[previousTile.x, previousTile.y];
+                var prevTile = Tiles[previousTile.x, previousTile.y];
                 if(prevTile.Items != null && prevTile.Items.Contains(entity))
                 {
                     prevTile.Items.Remove(entity);
@@ -55,13 +62,11 @@ namespace MGStudio.RunTime
             return entity;
         }
 
-        private ProjectGame Parent;
-
         public Room(ProjectGame parent)
         {
             Parent = parent;
 
-            ActivatedEntities = new Tile[Width, Height];
+            Tiles = new Tile[Width, Height];
 
             Entity.MovedService = MovedObjects;
         }
@@ -71,7 +76,7 @@ namespace MGStudio.RunTime
 
             var tileVector = GetTileIndex(x, y);
             
-            var tiles = ActivatedEntities[tileVector.x, tileVector.y];
+            var tiles = Tiles[tileVector.x, tileVector.y];
 
             if (tiles.Items != null)
                 yield return null;
@@ -117,10 +122,48 @@ namespace MGStudio.RunTime
 
             ValidateScreenPosistions(ref _x, ref _y);
 
+            ActivatedEntities.Add(newEntity);
+
             newEntity.X = _x;
             newEntity.Y= _y;
 
             return newEntity;
+        }
+
+        public Entity DeleteEntity(Entity entity)
+        {
+            if (entity == null)
+                return null;
+
+            if (ActivatedEntities.Contains(entity))
+                ActivatedEntities.Remove(entity);
+
+            if(!entity.__New)
+            {
+                var tileVector = GetTileIndex(entity.__X, entity.__Y);
+
+                var tile = Tiles[tileVector.x, tileVector.y];
+                if (tile.Items != null && tile.Items.Contains(entity))
+                    tile.Items.Remove(entity);
+                entity.__Deleted = true;
+                entity.Delete();
+            }
+
+            return entity;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            int length = ActivatedEntities.Count;
+            for (int i = 0; i < length; i++)
+            {
+                ActivatedEntities[i].Step(gameTime);
+            }
+        }
+
+        public void Draw(GameTime gameTime)
+        {
+            
         }
     }
 }

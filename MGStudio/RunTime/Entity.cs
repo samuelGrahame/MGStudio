@@ -20,11 +20,10 @@ namespace MGStudio.RunTime
 
         internal float __X; // Processed X
         internal float __Y; // Processed Y
-        internal bool __New = true; // Processed Y
+        internal bool __New = true; // 
+        internal bool __Deleted = false; //
 
-        private float x;
-
-
+        private float x;        
 
         public float X
         {
@@ -72,7 +71,6 @@ namespace MGStudio.RunTime
             }
         }
 
-
         public virtual void Step(GameTime gameTime)
         {
 
@@ -92,5 +90,10 @@ namespace MGStudio.RunTime
         {
 
         }        
+
+        public virtual void Delete()
+        {
+
+        }
     }
 }

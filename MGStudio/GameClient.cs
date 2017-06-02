@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MGStudio.RunTime;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -9,19 +10,19 @@ namespace MGStudio
     /// </summary>
     public class GameClient : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
-        KeyboardState NewKeyboard = new KeyboardState();
-        KeyboardState OldKeyboard = new KeyboardState();
+        public ProjectGame ActiveGame;
 
-        MouseState NewMouse = new MouseState();
-        MouseState OldMouse = new MouseState();
-
-        public GameClient()
+        public GameClient(ProjectGame activeGame)
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
+            ActiveGame = activeGame;
+
+            ActiveGame?.Ctor(GraphicsDevice, graphics);
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace MGStudio
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            
             base.Initialize();
         }
 
@@ -45,6 +46,8 @@ namespace MGStudio
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            
+            ActiveGame?.LoadContent(spriteBatch);
 
             // TODO: use this.Content to load your game content here
         }
@@ -56,6 +59,7 @@ namespace MGStudio
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            ActiveGame?.UnloadContent();
         }
 
         /// <summary>
@@ -68,6 +72,8 @@ namespace MGStudio
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            ActiveGame?.Update(gameTime);
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -78,11 +84,16 @@ namespace MGStudio
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+        {            
+            if(ActiveGame == null)
+            {
+                GraphicsDevice.Clear(Color.CornflowerBlue);
+            }
+            else
+            {
+                ActiveGame.Draw(gameTime);
+            }
+            
             base.Draw(gameTime);
         }
     }

@@ -88,7 +88,7 @@
     <Compile Include="frmSprites.Designer.cs">
       <DependentUpon>frmSprites.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game1.cs" />
+    <Compile Include="GameClient.cs" />
     <Compile Include="LockBitmap.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +99,8 @@
     </Compile>
     <Compile Include="RunTime\Entity.cs" />
     <Compile Include="RunTime\EntityService.cs" />
+    <Compile Include="RunTime\GameState.cs" />
+    <Compile Include="RunTime\IGameOverload.cs" />
     <Compile Include="RunTime\ProjectGame.cs" />
     <Compile Include="RunTime\Room.cs" />
     <Compile Include="RunTime\Sprite.cs" />
