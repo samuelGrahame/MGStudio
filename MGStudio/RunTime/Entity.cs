@@ -15,13 +15,30 @@ namespace MGStudio.RunTime
         public bool Solid { get; set; } = false;
         public bool Persistent { get; set; } = false;
         public int Depth { get; set; } = 0;
+        public static EntityService MovedService;
+        internal bool MovedToService = false;
+
+        internal float __X; // Processed X
+        internal float __Y; // Processed Y
+        internal bool __New = true; // Processed Y
 
         private float x;
+
+
 
         public float X
         {
             get { return x; }
-            set { x = value; }
+            set {
+                if (x == value)
+                    return;
+
+                x = value;
+                if((!MovedToService && (MovedToService = true)))
+                {                    
+                    MovedService.Add(this);
+                }                                    
+            }
         }
 
         private float y;
@@ -30,10 +47,14 @@ namespace MGStudio.RunTime
         {
             get { return y; }
             set {
-                if (y != value)
+                if (y == value)
                     return;
 
                 y = value;
+                if ((!MovedToService && (MovedToService = true)))
+                {
+                    MovedService.Add(this);
+                }
             }
         }
         

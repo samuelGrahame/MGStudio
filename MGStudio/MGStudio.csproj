@@ -102,6 +102,7 @@
     <Compile Include="RunTime\ProjectGame.cs" />
     <Compile Include="RunTime\Room.cs" />
     <Compile Include="RunTime\Sprite.cs" />
+    <Compile Include="RunTime\Tile.cs" />
     <Compile Include="Scripting.evaluator.cs" />
     <Compile Include="Scripting.Extensions.cs" />
     <Compile Include="Scripting.native.cs" />
