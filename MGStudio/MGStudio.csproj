@@ -55,8 +55,15 @@
     <Compile Include="Design\GameObjectProperties.cs" />
     <Compile Include="Design\Project.cs" />
     <Compile Include="Design\DesignSprite.cs" />
+    <Compile Include="EventNodes\Control\IfExpression\EventNodeIf.cs" />
     <Compile Include="FastDraw.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmEventChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEventChange.Designer.cs">
+      <DependentUpon>frmEventChange.cs</DependentUpon>
     </Compile>
     <Compile Include="frmImageEditor.cs">
       <SubType>Form</SubType>
@@ -221,6 +228,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\var24x24.png" />
+    <None Include="Resources\If24x24.png" />
+    <None Include="Resources\adateoccurring_32x32.png" />
+    <None Include="Resources\adateoccurring_16x16.png" />
+    <None Include="Resources\text2_32x32.png" />
+    <None Include="Resources\text2_16x16.png" />
+    <None Include="Resources\number_32x32.png" />
+    <None Include="Resources\number_16x16.png" />
+    <None Include="Resources\solution_32x32.png" />
+    <None Include="Resources\solution_16x16.png" />
+    <None Include="Resources\programminglanguage_16x16.png" />
+    <None Include="Resources\csharp_16x16.png" />
+    <None Include="Resources\squeeze_16x16.png" />
+    <None Include="Resources\next_16x16.png" />
+    <None Include="Resources\previous_16x16.png" />
+    <None Include="Resources\download_16x16.png" />
+    <None Include="Resources\walking_16x16.png" />
+    <None Include="Resources\image_16x161.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\delete_16x162.png" />
+    <None Include="Resources\pointer_16x16.png" />
+    <None Include="Resources\suggestion_16x16.png" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\Color.png" />
@@ -273,6 +302,9 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmEventChange.resx">
+      <DependentUpon>frmEventChange.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmImageEditor.resx">
       <DependentUpon>frmImageEditor.cs</DependentUpon>
     </EmbeddedResource>

@@ -34,17 +34,17 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit1 = new DevExpress.XtraEditors.CalcEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
@@ -52,14 +52,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,25 +116,14 @@
             this.groupControl1.TabIndex = 8;
             this.groupControl1.Text = "Origin";
             // 
-            // calcEdit1
+            // simpleButton4
             // 
-            this.calcEdit1.Location = new System.Drawing.Point(37, 24);
-            this.calcEdit1.Name = "calcEdit1";
-            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit1.Properties.Mask.EditMask = "n0";
-            this.calcEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.calcEdit1.Size = new System.Drawing.Size(50, 20);
-            this.calcEdit1.TabIndex = 0;
-            this.calcEdit1.EditValueChanged += new System.EventHandler(this.calcEdit1_EditValueChanged);
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(19, 27);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(10, 13);
-            this.labelControl5.TabIndex = 9;
-            this.labelControl5.Text = "&X:";
+            this.simpleButton4.Location = new System.Drawing.Point(54, 53);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton4.TabIndex = 12;
+            this.simpleButton4.Text = "&Centre";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // labelControl6
             // 
@@ -156,14 +145,25 @@
             this.calcEdit2.TabIndex = 10;
             this.calcEdit2.EditValueChanged += new System.EventHandler(this.calcEdit2_EditValueChanged);
             // 
-            // simpleButton4
+            // labelControl5
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(54, 53);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton4.TabIndex = 12;
-            this.simpleButton4.Text = "&Centre";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            this.labelControl5.Location = new System.Drawing.Point(19, 27);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(10, 13);
+            this.labelControl5.TabIndex = 9;
+            this.labelControl5.Text = "&X:";
+            // 
+            // calcEdit1
+            // 
+            this.calcEdit1.Location = new System.Drawing.Point(37, 24);
+            this.calcEdit1.Name = "calcEdit1";
+            this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit1.Properties.Mask.EditMask = "n0";
+            this.calcEdit1.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.calcEdit1.Size = new System.Drawing.Size(50, 20);
+            this.calcEdit1.TabIndex = 0;
+            this.calcEdit1.EditValueChanged += new System.EventHandler(this.calcEdit1_EditValueChanged);
             // 
             // panelControl1
             // 
@@ -186,13 +186,14 @@
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Collision Checking";
             // 
-            // checkEdit1
+            // simpleButton6
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(8, 23);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Precise collision checking";
-            this.checkEdit1.Size = new System.Drawing.Size(177, 19);
-            this.checkEdit1.TabIndex = 0;
+            this.simpleButton6.Image = global::MGStudio.Properties.Resources.forcetesting_16x16;
+            this.simpleButton6.Location = new System.Drawing.Point(19, 71);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(150, 23);
+            this.simpleButton6.TabIndex = 11;
+            this.simpleButton6.Text = "&Modify Mask";
             // 
             // checkEdit2
             // 
@@ -201,6 +202,14 @@
             this.checkEdit2.Properties.Caption = "Seperate collision masks";
             this.checkEdit2.Size = new System.Drawing.Size(177, 19);
             this.checkEdit2.TabIndex = 1;
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(8, 23);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "Precise collision checking";
+            this.checkEdit1.Size = new System.Drawing.Size(177, 19);
+            this.checkEdit1.TabIndex = 0;
             // 
             // pictureEdit1
             // 
@@ -218,15 +227,6 @@
             this.pictureEdit1.Size = new System.Drawing.Size(32, 32);
             this.pictureEdit1.TabIndex = 11;
             this.pictureEdit1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureEdit1_Paint);
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Image = global::MGStudio.Properties.Resources.forcetesting_16x16;
-            this.simpleButton6.Location = new System.Drawing.Point(19, 71);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(150, 23);
-            this.simpleButton6.TabIndex = 11;
-            this.simpleButton6.Text = "&Modify Mask";
             // 
             // simpleButton5
             // 
@@ -292,14 +292,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -53,12 +53,15 @@
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenuSprite = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.popupMenuObjects = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuSprite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuObjects)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -78,9 +81,10 @@
             this.barButtonItem10,
             this.barButtonItem11,
             this.barButtonItem12,
-            this.barButtonItem13});
+            this.barButtonItem13,
+            this.barButtonItem14});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 14;
+            this.ribbon.MaxItemId = 15;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -313,17 +317,31 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             // 
-            // popupMenu1
+            // popupMenuSprite
             // 
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem7);
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem8);
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem9, true);
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem10, true);
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem11, true);
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem12, true);
-            this.popupMenu1.ItemLinks.Add(this.barButtonItem13, true);
-            this.popupMenu1.Name = "popupMenu1";
-            this.popupMenu1.Ribbon = this.ribbon;
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem7);
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem8);
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem9, true);
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem10, true);
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem11, true);
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem12, true);
+            this.popupMenuSprite.ItemLinks.Add(this.barButtonItem13, true);
+            this.popupMenuSprite.Name = "popupMenuSprite";
+            this.popupMenuSprite.Ribbon = this.ribbon;
+            // 
+            // popupMenuObjects
+            // 
+            this.popupMenuObjects.ItemLinks.Add(this.barButtonItem14);
+            this.popupMenuObjects.Name = "popupMenuObjects";
+            this.popupMenuObjects.Ribbon = this.ribbon;
+            // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "Create Object";
+            this.barButtonItem14.Id = 14;
+            this.barButtonItem14.ImageOptions.Image = global::MGStudio.Properties.Resources.new_16x16;
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
             // 
             // frmMainForm
             // 
@@ -345,7 +363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuSprite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenuObjects)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,6 +395,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
-        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.PopupMenu popupMenuSprite;
+        private DevExpress.XtraBars.PopupMenu popupMenuObjects;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
     }
 }

@@ -11,12 +11,27 @@ namespace MGStudio.Design
     {
         public Bitmap Icon;
         public string Category;
-        public int TabIndex;
+        public string TabPage;
         public string ScriptCode;
 
         public virtual string GetScriptCode()
         {
             return ScriptCode;
+        }
+
+        public virtual T CreateNewFromThis<T>() where T : GameObjectEventNode
+        {
+            var x = Activator.CreateInstance<T>();
+            if(this.Icon != null)
+            {
+                x.Icon = new Bitmap(this.Icon);
+            }
+
+            x.Category = Category;
+            x.TabPage = TabPage;
+            x.ScriptCode = ScriptCode;
+
+            return x;
         }
     }
 }

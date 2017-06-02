@@ -78,7 +78,10 @@ namespace MGStudio
             {
                 if(IsFocusedNodeThisIndex(0))
                 {
-                    popupMenu1.ShowPopup(Control.MousePosition);
+                    popupMenuSprite.ShowPopup(Control.MousePosition);
+                }else  if (IsFocusedNodeThisIndex(7))
+                {
+                    popupMenuObjects.ShowPopup(Control.MousePosition);
                 }
             }
             else
@@ -97,7 +100,7 @@ namespace MGStudio
 
         public bool IsFocusedNodeThisIndex(int index)
         {
-            return (treeList1.FocusedNode.RootNode.Id == 0);
+            return (treeList1.FocusedNode.RootNode.Id == index);
         }
 
         private void frmMainForm_Load(object sender, EventArgs e)
@@ -185,6 +188,35 @@ namespace MGStudio
 
                 }
             }
+        }
+
+        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var gameObject = new GameObject() { Name = "object_" + ActiveProject.ObjectsDirectory.Count };
+            TreeListNode node;
+            if (treeList1.FocusedNode == null)
+            {
+                node = treeList1.AppendNode(new object[] { gameObject.Name }, treeList1.FocusedNode);
+            }
+            else
+            {
+                node = treeList1.AppendNode(new object[] { gameObject.Name }, treeList1.FocusedNode.RootNode);
+            }
+
+            node.Tag = gameObject;
+            node.ParentNode.Expanded = true;
+            node.ImageIndex = -1;
+            node.SelectImageIndex = -1;
+            node.StateImageIndex = -1;
+
+            ActiveProject.ObjectsDirectory.Add(gameObject);
+
+            var newx = new frmObject();
+            newx.Node = node;
+            newx.gameObject = gameObject;
+            newx.MdiParent = this;           
+            newx.TopLevel = false;
+            newx.Show();
         }
     }
 }

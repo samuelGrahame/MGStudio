@@ -130,7 +130,7 @@ namespace MGStudio.Design
                                 tempBuilder.AppendFormat(@"
             if(MouseInSprite && New.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.No__button:
+                            case Mouses.No_button:
                                 tempBuilder.AppendFormat(@"
             if(MouseInSprite && New.LeftButton == ButtonState.Released && New.RightButton == ButtonState.Released && New.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
@@ -166,39 +166,39 @@ namespace MGStudio.Design
                                 break;
                             case Mouses.Mouse_wheel_down:
                                 break;
-                            case Mouses.Global_left_button:
+                            case Mouses.Window_left_button:
                                 tempBuilder.AppendFormat(@"
             if(New.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_right_button:
+                            case Mouses.Window_right_button:
                                 tempBuilder.AppendFormat(@"
             if(New.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_middle_button:
+                            case Mouses.Window_middle_button:
                                 tempBuilder.AppendFormat(@"
             if(New.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_left_pressed:
+                            case Mouses.Window_left_pressed:
                                 tempBuilder.AppendFormat(@"
             if(New.LeftButton == ButtonState.Pressed && Old.LeftButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_right_pressed:
+                            case Mouses.Window_right_pressed:
                                 tempBuilder.AppendFormat(@"
             if(New.RightButton == ButtonState.Pressed && Old.RightButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_middle_pressed:
+                            case Mouses.Window_middle_pressed:
                                 tempBuilder.AppendFormat(@"
             if(New.MiddleButton == ButtonState.Pressed && Old.MiddleButton == ButtonState.Released){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_left_released:
+                            case Mouses.Window_left_released:
                                 tempBuilder.AppendFormat(@"
             if(New.LeftButton == ButtonState.Released && Old.LeftButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_right_released:
+                            case Mouses.Window_right_released:
                                 tempBuilder.AppendFormat(@"
             if(New.RightButton == ButtonState.Released && Old.RightButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;
-                            case Mouses.Global_middle_released:
+                            case Mouses.Window_middle_released:
                                 tempBuilder.AppendFormat(@"
             if(New.MiddleButton == ButtonState.Released && Old.MiddleButton == ButtonState.Pressed){0}", "{ " + funcName + "(); }");
                                 break;

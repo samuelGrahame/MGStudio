@@ -49,7 +49,7 @@ namespace MGStudio.BaseObjects
         Left_button,
         Right_button,
         Middle_button,
-        No__button,
+        No_button,
         Left_pressed,
         Right_pressed,
         Middle_pressed,
@@ -60,14 +60,14 @@ namespace MGStudio.BaseObjects
         Mouse_leave,
         Mouse_wheel_up,
         Mouse_wheel_down,
-        Global_left_button,
-        Global_right_button,
-        Global_middle_button,
-        Global_left_pressed,
-        Global_right_pressed,
-        Global_middle_pressed,
-        Global_left_released,
-        Global_right_released,
-        Global_middle_released
+        Window_left_button,
+        Window_right_button,
+        Window_middle_button,
+        Window_left_pressed,
+        Window_right_pressed,
+        Window_middle_pressed,
+        Window_left_released,
+        Window_right_released,
+        Window_middle_released
     }
 }
