@@ -228,6 +228,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\close_16x16.png" />
+    <None Include="Resources\movedown_16x16.png" />
+    <None Include="Resources\moveup_16x16.png" />
+    <None Include="Resources\prev_16x16.png" />
+    <None Include="Resources\next_16x161.png" />
+    <None Include="Resources\recurrence_16x16.png" />
+    <None Include="Resources\forcetesting_16x161.png" />
+    <None Include="Resources\equalto_16x16.png" />
     <None Include="Resources\var24x24.png" />
     <None Include="Resources\If24x24.png" />
     <None Include="Resources\adateoccurring_32x32.png" />

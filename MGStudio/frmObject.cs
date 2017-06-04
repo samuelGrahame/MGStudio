@@ -154,18 +154,29 @@ namespace MGStudio
 
         private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-
+            RefreshEventNodes();
         }
 
         public void RefreshEventNodes()
         {
+            gridControl2.DataSource = null;
 
+        }
+
+        public DataTable CheckEventNodes()
+        {
+            var dt = gridControl2.DataSource as DataTable;
+            if(dt == null)
+            {
+                dt.Columns.Add("EventNode", typeof(GameObjectEventNode));
+            }
+            return dt;
         }
 
         private void gridView2_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             if(e.Column.FieldName == "Description" && e.RowHandle > -1)
-            {                
+            {
                 var goen = gridView2.GetRowCellValue(e.RowHandle, "EventNode") as GameObjectEventNode;
 
                 if (goen != null)
@@ -174,6 +185,26 @@ namespace MGStudio
                 }
 
                 e.Handled = true;
+            }
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            var goen = new GameObjectEventNode();
+            goen.Icon = (Bitmap)simpleButton6.Image;
+            goen.ScriptCode = "var x = 0;";
+            AddEventNode(goen);
+        }
+
+        public void AddEventNode(GameObjectEventNode eventNode)
+        {
+            if (gridView1.FocusedRowHandle > -1)
+            {
+                var gameEvent = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "Event") as GameObjectEvents;
+
+
+
+                gameEvent.EventNodes.Add(eventNode);
             }
         }
     }

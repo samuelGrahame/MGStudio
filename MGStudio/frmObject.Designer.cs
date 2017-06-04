@@ -47,12 +47,14 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
@@ -99,6 +101,7 @@
             // 
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.splitContainerControl1.IsSplitterFixed = true;
             this.splitContainerControl1.Location = new System.Drawing.Point(2, 21);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.splitContainerControl2);
@@ -106,7 +109,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(729, 407);
-            this.splitContainerControl1.SplitterPosition = 158;
+            this.splitContainerControl1.SplitterPosition = 117;
             this.splitContainerControl1.TabIndex = 20;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -122,7 +125,7 @@
             this.splitContainerControl2.Panel1.Text = "Panel1";
             this.splitContainerControl2.Panel2.Controls.Add(this.gridControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(559, 407);
+            this.splitContainerControl2.Size = new System.Drawing.Size(600, 407);
             this.splitContainerControl2.SplitterPosition = 152;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -228,7 +231,7 @@
             this.gridControl2.Location = new System.Drawing.Point(0, 0);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(395, 407);
+            this.gridControl2.Size = new System.Drawing.Size(436, 407);
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -267,27 +270,90 @@
             this.xtraTabControl1.HeaderOrientation = DevExpress.XtraTab.TabOrientation.Vertical;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(158, 407);
+            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage2;
+            this.xtraTabControl1.Size = new System.Drawing.Size(117, 407);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
             this.xtraTabPage2});
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(84, 405);
-            this.xtraTabPage1.Text = "Movement";
             // 
             // xtraTabPage2
             // 
-            this.xtraTabPage2.Controls.Add(this.label3);
-            this.xtraTabPage2.Controls.Add(this.label2);
-            this.xtraTabPage2.Controls.Add(this.label1);
+            this.xtraTabPage2.Controls.Add(this.simpleButton10);
+            this.xtraTabPage2.Controls.Add(this.simpleButton9);
+            this.xtraTabPage2.Controls.Add(this.simpleButton8);
+            this.xtraTabPage2.Controls.Add(this.simpleButton7);
+            this.xtraTabPage2.Controls.Add(this.simpleButton4);
+            this.xtraTabPage2.Controls.Add(this.simpleButton6);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(130, 405);
-            this.xtraTabPage2.Text = "Control";
+            this.xtraTabPage2.Size = new System.Drawing.Size(89, 405);
+            this.xtraTabPage2.Text = "Variable && Code Flow";
+            // 
+            // simpleButton10
+            // 
+            this.simpleButton10.Appearance.Font = new System.Drawing.Font("Consolas", 11.25F);
+            this.simpleButton10.Appearance.Options.UseFont = true;
+            this.simpleButton10.Image = global::MGStudio.Properties.Resources.close_16x16;
+            this.simpleButton10.Location = new System.Drawing.Point(9, 152);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton10.TabIndex = 25;
+            this.simpleButton10.Text = "Exit";
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.Appearance.Font = new System.Drawing.Font("Consolas", 11.25F);
+            this.simpleButton9.Appearance.Options.UseFont = true;
+            this.simpleButton9.Image = global::MGStudio.Properties.Resources.movedown_16x16;
+            this.simpleButton9.Location = new System.Drawing.Point(9, 123);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton9.TabIndex = 24;
+            this.simpleButton9.Text = "End";
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Consolas", 11.25F);
+            this.simpleButton8.Appearance.Options.UseFont = true;
+            this.simpleButton8.Image = global::MGStudio.Properties.Resources.moveup_16x16;
+            this.simpleButton8.Location = new System.Drawing.Point(9, 94);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton8.TabIndex = 22;
+            this.simpleButton8.Text = "Begin";
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Consolas", 11.25F);
+            this.simpleButton7.Appearance.Options.UseFont = true;
+            this.simpleButton7.Image = global::MGStudio.Properties.Resources.recurrence_16x16;
+            this.simpleButton7.Location = new System.Drawing.Point(9, 65);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton7.TabIndex = 8;
+            this.simpleButton7.Text = "Loop";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Consolas", 11.25F);
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.Image = global::MGStudio.Properties.Resources.forcetesting_16x161;
+            this.simpleButton4.Location = new System.Drawing.Point(9, 36);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton4.TabIndex = 7;
+            this.simpleButton4.Text = "Check";
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Consolas", 11.25F);
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Image = global::MGStudio.Properties.Resources.equalto_16x16;
+            this.simpleButton6.Location = new System.Drawing.Point(9, 7);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton6.TabIndex = 6;
+            this.simpleButton6.Text = "Var";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // groupControl1
             // 
@@ -300,45 +366,6 @@
             this.groupControl1.Size = new System.Drawing.Size(733, 430);
             this.groupControl1.TabIndex = 21;
             this.groupControl1.Text = "Object Events and Properties";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Silver;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Consolas", 11.25F);
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(4, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 32);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "var";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Consolas", 11.25F);
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(46, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 32);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "var";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.LemonChiffon;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Consolas", 11.25F);
-            this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(88, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 32);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "var";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmObject
             // 
@@ -381,7 +408,6 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private DevExpress.XtraGrid.GridControl gridControl1;
@@ -397,8 +423,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton simpleButton10;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
     }
 }
